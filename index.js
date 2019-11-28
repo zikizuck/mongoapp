@@ -3,6 +3,8 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const morgan = require('morgan');
 require ('./models');
+const mongoose = require('mongoose');
+
 
 
 const app = express();
@@ -14,6 +16,7 @@ app.use(morgan('combined'));
 
 ////
 require('./routes/users')(app); // from users.js we created func for the app
+require('./routes/posts')(app);
 ////
 
 

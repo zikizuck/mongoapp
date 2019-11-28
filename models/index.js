@@ -2,28 +2,14 @@
 
 const mongoose = require ('mongoose');
 
+//in the real worl we will input the mongodb likr this
+
+// const mongodbUri = process.env.MONGODB_URI || "mongodb://heroku_qv5n236q:ai66gl30jct9toenb3ic28kf98@ds349628.mlab.com:49628/heroku_qv5n236q";
+
 mongoose
-    .connect('mongodb://heroku_mjrklbvl:6an38k795kgunjropt3673dhm@ds033579.mlab.com:33579/heroku_mjrklbvl', {useNewUrlParser: true});
-    // .catch(()=> process.exit(1));
+    .connect('mongodb://heroku_qv5n236q:ai66gl30jct9toenb3ic28kf98@ds349628.mlab.com:49628/heroku_qv5n236q', {useNewUrlParser: true})
+    .catch(()=> process.exit(1));
 
 
-
-mongoose.model('User', {
-    name: String,
-    username: {
-        type: String,
-        require: true, // must enter name
-        unique: true, // check if there is the same name in the DB
-        validate(value){
-            return value.includes('@') && value.length >4; // can do .length > 4
-        }
-    },
-    password : String,
-    birthDate : Date,
-    gender : {
-        type:String,
-        enum: ['f' , 'm']
-    },
-    githubLink : String,
-    about : String
-});
+require('./user');
+require('./post');

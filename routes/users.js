@@ -17,7 +17,14 @@ function usersRoutes(app){
                 .then(user => res.json(user).end())
                 .catch(err => res.status(400).json(err).end())
         })
-        .delete('/api/users/:userId' , (req , res) =>{
+        .get('/api/users/:userId' , (req , res) =>{
+            User
+                .findById(req.params.userId)  // get the Id as string
+                .select('name birthDate gender about created')
+                .then((user) => res.json(user).end()) // return the object after the delete
+                .catch(err => res.status(400).json(err).end())
+
+        }).delete('/api/users/:userId' , (req , res) =>{
             User
                 .findById(req.params.userId)  // get the Id as string
                 .then(user => user.remove())
