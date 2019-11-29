@@ -8,7 +8,7 @@ mongoose.model('User', {
         require: true, // must enter name
         unique: true, // check if there is the same name in the DB
         validate(value){
-            return value.includes('@') && value.length >4; // can do .length > 4
+            return  value.length >2; // can do .length > 4 - value.includes('@') &&s
         }
     },
     password : String,
@@ -17,6 +17,6 @@ mongoose.model('User', {
         type:String,
         enum: ['f' , 'm']
     },
-    githubLink : String,
+    // githubLink : String,
     about : String
 });
